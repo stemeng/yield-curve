@@ -7,8 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1dy2-m2GvuXWHXuRDNbgI39R6vETNwqBF
 """
 
-!pip -q install ecbdata
-
 from ecbdata import ecbdata
 import pandas as pd
 import matplotlib.pyplot as plt
