@@ -11,6 +11,7 @@ from ecbdata import ecbdata
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import PercentFormatter
+import time
 
 # Anno corrente: si aggiorna automaticamente
 anno = pd.Timestamp.now(tz="Europe/Rome").year
