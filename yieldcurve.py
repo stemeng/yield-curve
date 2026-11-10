@@ -21,11 +21,30 @@ serie = "YC.B.U2.EUR.4F.G_N_A.SV_C_YM.PY_"
 
 curve = []
 
-for scadenza in range(1, 31):
-    df = ecbdata.get_series(
-        f"{serie}{scadenza}Y",
-        start=inizio
-    )
+
+for scadenza in range(1,31):
+
+    for tentativo in range(3):
+
+        try:
+
+            df = ecbdata.get_series(
+                f"{serie}{scadenza}Y",
+                start=inizio
+            )
+
+            break
+
+        except Exception as e:
+
+            print(
+                f"{scadenza}Y tentativo {tentativo+1}/3 fallito"
+            )
+
+            if tentativo < 2:
+                time.sleep(10)
+            else:
+                raise
 
     df["TIME_PERIOD"] = pd.to_datetime(df["TIME_PERIOD"])
     df["OBS_VALUE"] = pd.to_numeric(df["OBS_VALUE"], errors="coerce")
